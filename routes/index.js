@@ -560,13 +560,18 @@ function randomPage(req, res) {
   var seed = generateSeed(req.hostname + req.path);
 
   var title = randomTitle(seed);
-  var paragraphs = randomParagraphs(seed);
+  var paragraphs = ['test', 'test2', 'test3'];
   var links = randomLinks(seed, req.hostname);
 
   res.render('random', {title: title, paragraphs: paragraphs, links: links});
 }
 
-router.all('*', randomPage);
+function MainPage(req, res) {
+  let title = 'Hello, World!';
+  res.render('index', {title: title});
+}
+
+router.all('*', MainPage);
 
 // console.log(lorem.generateParagraphs(7));
 

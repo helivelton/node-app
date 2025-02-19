@@ -2,4 +2,14 @@ extends layout
 
 block content
   h1= title
-  p Welcome to #{title}
+  p Welcome
+  //- form(action="/submit" method="post" id="myForm")
+  //-   input(type="text" name="textfield" id="textfield" placeholder="")
+  //-   button(type="submit") Ok
+
+  script.
+    document.getElementById('myForm').addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent the form from submitting
+      const textFieldValue = document.getElementById('textfield').value;
+      console.log(textFieldValue);
+    });
