@@ -1,8 +1,8 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome
+  //- h1= title
+  //- p Welcome
   //- form(action="/submit" method="post" id="myForm")
   //-   input(type="text" name="textfield" id="textfield" placeholder="")
   //-   button(type="submit") Ok
@@ -12,4 +12,74 @@ block content
       event.preventDefault(); // Prevent the form from submitting
       const textFieldValue = document.getElementById('textfield').value;
       console.log(textFieldValue);
+
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+          const latitude = position.coords.latitude;
+          const longitude = position.coords.longitude;
+          console.log('Latitude:', latitude, 'Longitude:', longitude);
+          // You can send the location data to your server here
+        }, function(error) {
+          console.error('Error Code = ' + error.code + ' - ' + error.message);
+        });
+      } else {
+        console.error('Geolocation is not supported by this browser.');
+      }
     });
+
+  style.
+    .heart {
+      position: relative;
+      width: 50px;
+      height: 50px;
+      background-color: red;
+      transform: rotate(-45deg);
+      margin: 50px;
+      animation: fadeIn 0.8s infinite alternate;
+      opacity: 0.8;
+    }
+
+    .heart:before,
+    .heart:after {
+      content: "";
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      background-color: red;
+      border-radius: 50%;
+    }
+
+    .heart:before {
+      top: -25px;
+      left: 0;
+    }
+
+    .heart:after {
+      left: 25px;
+      top: 0;
+    }
+
+    .heart span {
+      z-index: 1;
+      position: absolute;
+      top: 30%;
+      left: 60%;
+      transform: translate(-50%, -50%) rotate(45deg);
+      color: white;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.5) rotate(-45deg);
+      }
+      to {
+        opacity: 0.8;
+        transform: scale(1) rotate(-45deg);
+      }
+    }
+
+  .heart
+    span H+E
